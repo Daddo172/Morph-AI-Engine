@@ -28,7 +28,6 @@ A hybrid real-time + batch architecture:
 
 ## 🏗️ Architecture
 
-```mermaid
 flowchart TD
     subgraph Client Layer
         A[Web Client / Frontend] -->|1. Async Event JSON| B[FastAPI Ingestion Engine]
