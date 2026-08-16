@@ -1,6 +1,4 @@
-Ecco il file `README.md` completo in formato Markdown, pronto da copiare e incollare direttamente nella radice della tua repository GitHub:
 
-```markdown
 # ⚡ Morph AI Engine
 
 > **Real-Time Web Clickstream Pipeline, Star Schema Data Warehouse & Online/Offline Feature Store for Dynamic Web Personalization.**
