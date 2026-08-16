@@ -12,7 +12,7 @@
 
 ## 🇮🇹 Presentazione del Progetto (Complementors)
 
-Questo repository è un **Proof of Concept (PoC)** ideato e sviluppato da **Davide Scolamiero**, fondatore di **Complementors** (partner digitale specializzato in Web Design, SEO/GEO avanzata, Data Engineering e AI applicata al business).
+Questo repository è un **Proof of Concept (PoC)** ideato e sviluppato dal fondatore di **Complementors** (partner digitale specializzato in Web Design, SEO/GEO avanzata, Data Engineering e AI applicata al business).
 
 ### Obiettivo del Progetto
 Dimostrare l'architettura tecnica e la fattibilità di un **sito web adattivo**[cite: 1]: un ecosistema che non mostra la stessa identica esperienza a tutti gli utenti, ma decide quali contenuti, layout e Call-To-Action (CTA) mostrare in tempo reale basandosi sul contesto, la geolocalizzazione e il comportamento di navigazione[cite: 1].
@@ -34,15 +34,15 @@ L'obiettivo non è vendere la tecnologia in sé, ma **massimizzare il tasso di c
 
 ```mermaid
 flowchart TD
-    subgraph Client Layer [Frontend / CMS]
-        A[Utente naviga sul sito] -->|1. Invia Evento JSON| B[FastAPI Ingestion Engine]
-        G[Frontend / Elementor] <--|4. Richiede profilo & CTA <30ms| F[Serving API]
+    subgraph client_layer ["Frontend / CMS"]
+        A["Utente naviga sul sito"] -->|1. Invia Evento JSON| B["FastAPI Ingestion Engine"]
+        G["Frontend / Elementor"] <--|"4. Richiede profilo & CTA (sub-30ms)"| F["Serving API"]
     end
 
-    subgraph Data Processing Engine
-        B -->|2. Inserisce Evento| C[(Clickstream Database)]
-        C -->|3. Aggrega & Calcola Feature| D[Feature Processor]
-        D -->|Aggiorna Profilo| E[(Feature Store)]
+    subgraph data_engine ["Data Processing Engine"]
+        B -->|2. Inserisce Evento| C[("Clickstream Database")]
+        C -->|3. Aggrega & Calcola Feature| D["Feature Processor"]
+        D -->|Aggiorna Profilo| E[("Feature Store")]
     end
 
     F <-->|Legge Intenzione Utente| E
