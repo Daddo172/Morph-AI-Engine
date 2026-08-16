@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Database locale SQLite (non caricare i dati locali)
+*.db
+clickstream.db
+
+# File di configurazione IDE
+.vscode/
+.idea/
