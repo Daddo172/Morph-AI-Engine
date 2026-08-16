@@ -36,16 +36,16 @@ L'obiettivo non è vendere la tecnologia in sé, ma **massimizzare il tasso di c
 flowchart TD
     subgraph client_layer ["Frontend / CMS"]
         A["Utente naviga sul sito"] -->|1. Invia Evento JSON| B["FastAPI Ingestion Engine"]
-        G["Frontend / Elementor"] <--|"4. Richiede profilo & CTA (sub-30ms)"| F["Serving API"]
+        F["Serving API"] -->|4. Restituisce profilo e CTA sub-30ms| G["Frontend / Elementor"]
     end
 
     subgraph data_engine ["Data Processing Engine"]
         B -->|2. Inserisce Evento| C[("Clickstream Database")]
-        C -->|3. Aggrega & Calcola Feature| D["Feature Processor"]
+        C -->|3. Aggrega e Calcola Feature| D["Feature Processor"]
         D -->|Aggiorna Profilo| E[("Feature Store")]
     end
 
-    F <-->|Legge Intenzione Utente| E
+    F -->|Legge Intenzione Utente| E
 
 🛠️ Stack TecnologicoBackend Framework: FastAPI (Python 3.11+)  Validation & Data Contracts: Pydantic v2Storage (MVP): SQLite (zero-config per ambiente locale e test)Storage (Production Architecture): PostgreSQL / Redis / Supabase[cite: 1, 2]Data Transformation (Batch Layer): dbt-core (Star Schema Data Warehouse)  📐 Schema Dati & Profilazione1. Ingestion Event SchemaJSON{
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
@@ -71,4 +71,3 @@ pip install -r requirements.txt
 2. Avvia l'Engine FastAPIBashuvicorn main:app --reload
 L'API sarà attiva su http://127.0.0.1:8000. Puoi accedere alla documentazione Swagger automatica all'indirizzo http://127.0.0.1:8000/docs.3. Genera Traffico di ProvaIn un secondo terminale, esegui lo script di simulazione traffico:Bashpython generate_traffic.py
 4. Interroga il Profilo CalcolatoBashcurl -X GET "[http://127.0.0.1:8000/api/v1/profile/usr_roma_01](http://127.0.0.1:8000/api/v1/profile/usr_roma_01)"
-👤 Autore & ContattiDavide ScolamieroSoftware & Data Engineer | Fondatore di Complementors  Specializzato in Web Architecture, SEO/GEO, Data Engineering e Intelligenza Artificiale[cite: 2].GitHub: @Daddo172Website: Complementors
