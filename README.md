@@ -12,7 +12,7 @@
 
 ## 🇮🇹 Presentazione del Progetto (Complementors)
 
-Questo repository è un **Proof of Concept (PoC)** ideato e sviluppato da **Davide Scolamiero**, fondatore di **Complementors** (partner digitale specializzato in Web Design, SEO/GEO avanzata, Data Engineering e AI applicata al business).
+Questo repository è un **Proof of Concept (PoC)** ideato e sviluppato dal fondatore di **Complementors** (partner digitale specializzato in Web Design, SEO/GEO avanzata, Data Engineering e AI applicata al business).
 
 ### Obiettivo del Progetto
 Dimostrare l'architettura tecnica e la fattibilità di un **sito web adattivo**: un ecosistema che non mostra la stessa identica esperienza a tutti gli utenti, ma decide quali contenuti, layout e Call-To-Action (CTA) mostrare in tempo reale basandosi sul contesto, la geolocalizzazione e il comportamento di navigazione.
