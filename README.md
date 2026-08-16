@@ -57,6 +57,7 @@ L'obiettivo non è vendere la tecnologia in sé, ma **massimizzare il tasso di c
        G -->|4. Richiede Profilo| F
        F <-->|Legge Intenzione Utente| E
        F -->|Restituisce CTA sub-30ms| G
+   end
 
 🛠️ Stack TecnologicoBackend Framework: FastAPI (Python 3.11+)  Validation & Data Contracts: Pydantic v2Storage (MVP): SQLite (zero-config per ambiente locale e test)Storage (Production Architecture): PostgreSQL / Redis / Supabase[cite: 1, 2]Data Transformation (Batch Layer): dbt-core (Star Schema Data Warehouse)  📐 Schema Dati & Profilazione1. Ingestion Event SchemaJSON{
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
@@ -82,3 +83,4 @@ pip install -r requirements.txt
 2. Avvia l'Engine FastAPIBashuvicorn main:app --reload
 L'API sarà attiva su http://127.0.0.1:8000. Puoi accedere alla documentazione Swagger automatica all'indirizzo http://127.0.0.1:8000/docs.3. Genera Traffico di ProvaIn un secondo terminale, esegui lo script di simulazione traffico:Bashpython generate_traffic.py
 4. Interroga il Profilo CalcolatoBashcurl -X GET "[http://127.0.0.1:8000/api/v1/profile/usr_roma_01](http://127.0.0.1:8000/api/v1/profile/usr_roma_01)"
+👤 Autore & Contatti
