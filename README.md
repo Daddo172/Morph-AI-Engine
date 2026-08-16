@@ -34,18 +34,29 @@ L'obiettivo non è vendere la tecnologia in sé, ma **massimizzare il tasso di c
 
    ```mermaid
    flowchart TD
-       subgraph client_layer ["Frontend / CMS"]
-           A["Utente naviga sul sito"] -->|1. Invia Evento JSON| B["FastAPI Ingestion Engine"]
-           F["Serving API"] -->|4. Restituisce profilo e CTA sub-30ms| G["Frontend / Elementor"]
+       subgraph client_layer ["Frontend / Client (WordPress / Elementor)"]
+           A["Utente naviga sul sito"]
+           G["Frontend / Elementor"]
        end
    
-       subgraph data_engine ["Data Processing Engine"]
-           B -->|2. Inserisce Evento| C[("Clickstream Database")]
-           C -->|3. Aggrega e Calcola Feature| D["Feature Processor"]
-           D -->|Aggiorna Profilo| E[("Feature Store")]
+       subgraph api_layer ["API Layer (FastAPI)"]
+           B["FastAPI Ingestion Engine"]
+           F["Serving API"]
        end
    
-       F -->|Legge Intenzione Utente| E
+       subgraph data_engine ["Data Processing Engine & Storage"]
+           C[("Clickstream Database")]
+           D["Feature Processor"]
+           E[("Feature Store")]
+       end
+   
+       A -->|1. Invia Evento JSON| B
+       B -->|2. Inserisce Evento| C
+       C -->|3. Aggrega e Calcola Feature| D
+       D -->|Aggiorna Profilo| E
+       G -->|4. Richiede Profilo| F
+       F <-->|Legge Intenzione Utente| E
+       F -->|Restituisce CTA sub-30ms| G
 
 🛠️ Stack TecnologicoBackend Framework: FastAPI (Python 3.11+)  Validation & Data Contracts: Pydantic v2Storage (MVP): SQLite (zero-config per ambiente locale e test)Storage (Production Architecture): PostgreSQL / Redis / Supabase[cite: 1, 2]Data Transformation (Batch Layer): dbt-core (Star Schema Data Warehouse)  📐 Schema Dati & Profilazione1. Ingestion Event SchemaJSON{
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
