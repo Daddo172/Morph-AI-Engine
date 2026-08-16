@@ -1,3 +1,6 @@
+Ecco il file `README.md` completo in formato Markdown, pronto da copiare e incollare direttamente nella radice della tua repository GitHub:
+
+```markdown
 # ⚡ Morph AI Engine
 
 > **Real-Time Web Clickstream Pipeline, Star Schema Data Warehouse & Online/Offline Feature Store for Dynamic Web Personalization.**
@@ -76,6 +79,7 @@ flowchart TD
 
 All inbound events strictly comply with the following JSON schema:
 
+```json
 {
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
   "session_id": "sess_889123",
@@ -97,6 +101,8 @@ All inbound events strictly comply with the following JSON schema:
     "user_agent": "Mozilla/5.0..."
   }
 }
+
+```
 
 ### 2. Star Schema Data Warehouse (dbt Models)
 
@@ -202,3 +208,5 @@ The feature store exposes two key feature groups:
 
 * Software & Data Engineer | Founder at Complementors
 * GitHub: [@Daddo172](https://www.google.com/search?q=https://github.com/Daddo172)
+
+```
