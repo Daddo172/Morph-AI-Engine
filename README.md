@@ -32,6 +32,21 @@ L'obiettivo non è vendere la tecnologia in sé, ma **massimizzare il tasso di c
 4. **Feature Store:** Memorizzazione del profilo utente aggiornato per l'accesso immediato[cite: 1].
 5. **Serving Layer:** Endpoint dedicato interrogato dal frontend per scambiare CTA o sezioni di pagina prima del rendering[cite: 1].
 
+   ```mermaid
+flowchart TD
+    subgraph client_layer ["Frontend / CMS"]
+        A["Utente naviga sul sito"] -->|1. Invia Evento JSON| B["FastAPI Ingestion Engine"]
+        F["Serving API"] -->|4. Restituisce profilo e CTA sub-30ms| G["Frontend / Elementor"]
+    end
+
+    subgraph data_engine ["Data Processing Engine"]
+        B -->|2. Inserisce Evento| C[("Clickstream Database")]
+        C -->|3. Aggrega e Calcola Feature| D["Feature Processor"]
+        D -->|Aggiorna Profilo| E[("Feature Store")]
+    end
+
+    F -->|Legge Intenzione Utente| E
+
 🛠️ Stack TecnologicoBackend Framework: FastAPI (Python 3.11+)  Validation & Data Contracts: Pydantic v2Storage (MVP): SQLite (zero-config per ambiente locale e test)Storage (Production Architecture): PostgreSQL / Redis / Supabase[cite: 1, 2]Data Transformation (Batch Layer): dbt-core (Star Schema Data Warehouse)  📐 Schema Dati & Profilazione1. Ingestion Event SchemaJSON{
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
   "user_id": "usr_roma_01",
