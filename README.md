@@ -46,6 +46,7 @@ flowchart TD
     end
 
     F -->|Legge Intenzione Utente| E
+    end
 
 🛠️ Stack TecnologicoBackend Framework: FastAPI (Python 3.11+)  Validation & Data Contracts: Pydantic v2Storage (MVP): SQLite (zero-config per ambiente locale e test)Storage (Production Architecture): PostgreSQL / Redis / Supabase[cite: 1, 2]Data Transformation (Batch Layer): dbt-core (Star Schema Data Warehouse)  📐 Schema Dati & Profilazione1. Ingestion Event SchemaJSON{
   "event_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
